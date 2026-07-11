@@ -1,3 +1,5 @@
+import ForexFaq from "@/components/ForexFaq";
+import ForexPerformance from "@/components/ForexPerformance";
 import HeroSection from "@/components/HeroSection";
 import MarketCategories from "@/components/MarketCategories";
 import TrustedByTraders from "@/components/TrustedByTraders";
@@ -32,6 +34,8 @@ export default function Home() {
       <MarketCategories/>
       <WhyChooseUs/>
       <TrustedByTraders/>
+      <ForexPerformance/>
+      <ForexFaq/>
     </div>
   );
 }
