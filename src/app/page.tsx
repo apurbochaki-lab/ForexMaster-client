@@ -5,6 +5,7 @@ import MarketCategories from "@/components/MarketCategories";
 import TrustedByTraders from "@/components/TrustedByTraders";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Image from "next/image";
+import BlogPage from "./blog/page";
 
 export default function Home() {
 
