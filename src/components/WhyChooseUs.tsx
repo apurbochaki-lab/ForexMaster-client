@@ -90,7 +90,7 @@ export default function WhyChooseUs() {
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <button className="bg-[#4edea3] hover:bg-[#4edea3]/90 text-[#003824] px-8 py-4 rounded-xl text-lg font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:scale-105 active:scale-95">
+                            <button className="bg-[#4edea3] hover:bg-[#4edea3]/90 text-[#003824] px-8 py-4 rounded-xl text-lg font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-200 hover:scale-105 active:scale-95">
                                 Explore Signals
                             </button>
                             <button className="border-2 border-[#ffb95f] text-[#ffb95f] hover:bg-[#ffb95f]/10 px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 active:scale-95">
@@ -131,18 +131,9 @@ export default function WhyChooseUs() {
                     </div>
                 </section>
 
-                {/* Brand Logos */}
-                <div className="w-full mt-16 py-8 border-t border-white/5">
-                    <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12 opacity-30 grayscale hover:opacity-60 transition-opacity duration-300">
-                        <div className="font-bold text-xl lg:text-2xl tracking-tighter">MetaTrader</div>
-                        <div className="font-bold text-xl lg:text-2xl tracking-tighter">TradingView</div>
-                        <div className="font-bold text-xl lg:text-2xl tracking-tighter">REUTERS</div>
-                        <div className="font-bold text-xl lg:text-2xl tracking-tighter">Bloomberg</div>
-                    </div>
-                </div>
 
                 {/* Stats Section */}
-                <section className="mt-6">
+                <section className="mt-10">
                     <div className="backdrop-blur-xl bg-slate-800/70 border border-white/10 p-8 lg:p-12 rounded-[2rem] flex flex-col md:flex-row justify-around items-center gap-8 text-center hover:shadow-2xl hover:shadow-black/30 transition-shadow">
                         <div className="space-y-2">
                             <div className="text-[#4edea3] font-bold text-4xl lg:text-5xl">$2.4B+</div>
