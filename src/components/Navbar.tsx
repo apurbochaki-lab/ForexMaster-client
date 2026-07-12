@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
-    console.log(user, "Loading -->", isPending)
+    // console.log(user, "Loading -->", isPending)
 
     const handleLogout = async () => {
         await authClient.signOut({
@@ -41,7 +41,7 @@ const Navbar = () => {
 
         if (user) {
             links.push(
-                { label: "Add Analysis", href: "/add-analysis", icon: ArrowShapeTurnUpLeft },
+                { label: "Add Analysis", href: "/analysis/add", icon: ArrowShapeTurnUpLeft },
                 { label: "Manage Analysis", href: "/manage-analysis", icon: LayoutCells }
             );
         }
