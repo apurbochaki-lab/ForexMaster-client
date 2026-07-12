@@ -1,6 +1,8 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function LoginPage() {
@@ -145,6 +147,12 @@ export default function LoginPage() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
+        
+        const {data, error} = authClient.signIn.email({
+            email: formData?.email,
+            password: formData?.password,
+            callbackURL: "/"
+        })
         console.log('Login Form Request Data:', formData);
     };
 
@@ -153,7 +161,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[#0b1326] font-['Outfit'] text-[#dae2fd] overflow-x-hidden antialiased">
+        <div className="min-h-screen bg-[#0b1326] font-['Outfit'] text-[#dae2fd] overflow-x-hidden antialiased my-10">
             {/* Dynamic Font Asset Loader tags compatible with server structure */}
             <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
             <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
@@ -170,16 +178,15 @@ export default function LoginPage() {
 
                     <div className="relative z-10">
                         {/* Brand Anchor */}
-                        <div className="flex items-center gap-3 mb-16 fade-in" style={{ animationDelay: '0.1s' }}>
+                        {/* <div className="flex items-center gap-3 mb-16 fade-in" style={{ animationDelay: '0.1s' }}>
                             <div className="w-10 h-10 bg-[#10b981] rounded flex items-center justify-center">
                                 <span className="material-symbols-outlined text-[#00422b]" style={{ fontVariationSettings: "'FILL' 1" }}>
                                     trending_up
                                 </span>
                             </div>
-                            <h1 className="text-[36px] font-bold tracking-tight text-[#dae2fd] leading-[44px]">ForexMaster</h1>
-                        </div>
+                        </div> */}
 
-                        <div className="max-w-xl fade-in" style={{ animationDelay: '0.2s' }}>
+                        <div className="mt-20 max-w-xl fade-in" style={{ animationDelay: '0.2s' }}>
                             <h2 className="text-[64px] font-bold text-[#dae2fd] mb-6 leading-[72px] tracking-[-0.02em]">
                                 Trade Smarter With Professional <span className="text-[#4edea3]">Market Analysis</span>
                             </h2>
@@ -238,12 +245,12 @@ export default function LoginPage() {
                 <section className="flex-1 flex flex-col items-center justify-center p-6 relative">
 
                     {/* Mobile Header Block */}
-                    <div className="md:hidden absolute top-8 left-8 flex items-center gap-2">
+                    {/* <div className="md:hidden absolute top-8 left-8 flex items-center gap-2">
                         <div className="w-8 h-8 bg-[#10b981] rounded flex items-center justify-center">
                             <span className="material-symbols-outlined text-[#00422b] text-lg">trending_up</span>
                         </div>
-                        <h1 className="text-[28px] font-semibold text-[#dae2fd] leading-[36px]">ForexMaster</h1>
-                    </div>
+                        
+                    </div> */}
 
                     {/* Login Interface Card */}
                     <div className="w-full max-w-[420px] glass-card p-10 rounded-[32px] fade-in shadow-2xl" style={{ animationDelay: '0.3s' }}>
@@ -346,7 +353,9 @@ export default function LoginPage() {
                         <footer className="mt-10 text-center">
                             <p className="text-[16px] text-[#bbcabf] leading-[24px]">
                                 Don't have an account?
-                                <a className="text-[#4edea3] font-bold hover:underline ml-1" href="#">Create Account</a>
+                                <Link className="text-[#4edea3] font-bold hover:underline ml-1" href="/auth/register">Create Account
+
+                                </Link>
                             </p>
                         </footer>
                     </div>

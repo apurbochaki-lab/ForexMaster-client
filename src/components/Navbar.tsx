@@ -1,19 +1,35 @@
 'use client'
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Bars, House, ChartAreaStacked, ArrowShapeTurnUpLeft, LayoutCells, FileText, CircleInfoFill } from "@gravity-ui/icons";
-import { Button, Drawer } from "@heroui/react";
+import { Button, Drawer, Spinner } from "@heroui/react";
 import { useMemo, useState } from "react";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
     const pathName = usePathname();
+    const router = useRouter()
 
     // Drawer-এর স্টেট কন্ট্রোল
     const [isOpen, setIsOpen] = useState(false);
 
     // Better auth session user (Demo)
-    const user: boolean = false;
+    // const user: boolean = false;
+
+    const { data: session, isPending } = authClient.useSession();
+    const user = session?.user;
+    console.log(user, "Loading -->", isPending)
+
+    const handleLogout = async () => {
+        await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    router.push("/auth/login");
+                },
+            },
+        });
+    }
 
     const navLinks = useMemo(() => {
         const links = [
@@ -64,24 +80,30 @@ const Navbar = () => {
 
                 {/* Desktop Auth Buttons */}
                 <div className="hidden md:flex items-center gap-4">
-                    {user ? (
-                        <button className="px-6 py-2 rounded-lg border-2 border-red-500 text-red-500 font-bold hover:bg-red-500/10 active:scale-95 transition-all">
-                            Logout
-                        </button>
-                    ) : (
-                        <>
-                            <Link href="/auth/login">
-                                <button className="px-6 py-2 rounded-lg border-2 border-[#ffb95f] text-[#ffb95f] font-bold hover:bg-[#ffb95f]/10 active:scale-95 transition-all">
-                                    Login
-                                </button>
-                            </Link>
-                            <Link href="/auth/register">
-                                <button className="px-6 py-2 rounded-lg bg-[#10b981] text-[#00422b] font-bold hover:scale-105 active:scale-95 transition-all">
-                                    Register
-                                </button>
-                            </Link>
-                        </>
-                    )}
+
+                    {isPending ?
+                        <div className="flex flex-col items-center gap-2">
+                            <Spinner color="success" />
+                            <span className="text-xs text-muted">Loading</span>
+                        </div>
+                        : user ? (
+                            <button onClick={handleLogout} className="px-6 py-2 rounded-lg border-2 border-red-500 text-red-500 font-bold hover:bg-red-500/10 active:scale-95 transition-all">
+                                Logout
+                            </button>
+                        ) : (
+                            <>
+                                <Link href="/auth/login">
+                                    <button className="px-6 py-2 rounded-lg border-2 border-[#ffb95f] text-[#ffb95f] font-bold hover:bg-[#ffb95f]/10 active:scale-95 transition-all">
+                                        Login
+                                    </button>
+                                </Link>
+                                <Link href="/auth/register">
+                                    <button className="px-6 py-2 rounded-lg bg-[#10b981] text-[#00422b] font-bold hover:scale-105 active:scale-95 transition-all">
+                                        Register
+                                    </button>
+                                </Link>
+                            </>
+                        )}
                 </div>
 
 
@@ -142,7 +164,7 @@ const Navbar = () => {
                                         {/* Mobile Conditional Auth Buttons */}
                                         <div className="flex flex-col gap-3 mt-auto pt-6 border-t border-white/10 bg-[#0b1326]">
                                             {user ? (
-                                                <button className="w-full px-6 py-3 rounded-xl border-2 border-red-500 text-red-500 font-bold hover:bg-red-500/10 active:scale-95 transition-all text-center">
+                                                <button onClick={handleLogout} className="w-full px-6 py-3 rounded-xl border-2 border-red-500 text-red-500 font-bold hover:bg-red-500/10 active:scale-95 transition-all text-center">
                                                     Logout
                                                 </button>
                                             ) : (

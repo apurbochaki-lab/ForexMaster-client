@@ -1,6 +1,8 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function RegisterPage() {
@@ -156,8 +158,23 @@ export default function RegisterPage() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFormSubmit = (e: React.FormEvent) => {
+    const router = useRouter();
+
+    const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        const { data, error } = await authClient.signUp.email({
+            name: formData?.name,
+            email: formData?.email,
+            password: formData?.password,
+            image: formData?.image
+        })
+
+        if (!error) {
+            router.push("/")
+            console.log(data, error)
+        }
+
         console.log('Registration Data:', formData);
     };
 
