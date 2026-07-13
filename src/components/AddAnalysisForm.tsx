@@ -22,7 +22,6 @@ import {
 import Image from "next/image";
 import { imageUpload } from "@/lib/core/imgUpload";
 import { postAnalysis } from "@/lib/actions/analysis";
-import { serverMutation } from "@/lib/core/server";
 import toast from "react-hot-toast";
 
 const currencyPairOptions = [
@@ -66,6 +65,16 @@ const confidenceOptions = [
     "Medium",
     "High",
 ];
+
+const tradingTypeOptions = [
+    "Scalping Trading",
+    "Intraday Trading",
+    "Swing Trading",
+    "Position Trading",
+    "Momentum Trading",
+    "Breakout Trading",
+    "⚠️ News Trading"
+]
 
 export default function AnalysisForm({ user }) {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -317,6 +326,34 @@ export default function AnalysisForm({ user }) {
                             <Select.Popover className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl mt-1">
                                 <ListBox className="p-1">
                                     {confidenceOptions.map((item) => (
+                                        <ListBox.Item
+                                            key={item}
+                                            id={item}
+                                            textValue={item}
+                                            className="text-slate-200 hover:bg-[#10B981] hover:text-white px-3 py-2 rounded-lg cursor-pointer transition-colors"
+                                        >
+                                            {item}
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                    ))}
+                                </ListBox>
+                            </Select.Popover>
+                        </Select>
+
+                        {/* Trading Type */}
+                        <Select
+                            name="tradingType"
+                            className="w-full"
+                            placeholder="Select confidence"
+                        >
+                            <Label className="text-sm font-medium text-slate-300 mb-2 block">Trading Type</Label>
+                            <Select.Trigger className="w-full bg-slate-900/50 border border-slate-700 text-white rounded-xl h-12 px-4 flex items-center justify-between">
+                                <Select.Value />
+                                <Select.Indicator className="text-slate-400" />
+                            </Select.Trigger>
+                            <Select.Popover className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl mt-1">
+                                <ListBox className="p-1">
+                                    {tradingTypeOptions.map((item) => (
                                         <ListBox.Item
                                             key={item}
                                             id={item}
