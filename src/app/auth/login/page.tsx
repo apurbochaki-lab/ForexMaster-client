@@ -4,6 +4,7 @@ import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState, useEffect, useRef } from 'react';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -26,6 +27,7 @@ export default function LoginPage() {
                 canvas.width = w;
                 canvas.height = h;
             }
+
         };
 
         if (typeof ResizeObserver !== 'undefined') {
@@ -33,7 +35,7 @@ export default function LoginPage() {
         }
         syncSize();
 
-        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        const gl = canvas.getContext("webgl") as WebGLRenderingContext | null;
         if (!gl) return;
 
         const vs = `
@@ -61,28 +63,28 @@ export default function LoginPage() {
           vec2 uv = v_texCoord;
           vec2 grid = uv * vec2(20.0, 10.0);
           vec2 id = floor(grid);
-          
+
           vec3 bgColor = vec3(0.0588, 0.0902, 0.1647); 
           vec3 bullColor = vec3(0.0627, 0.7255, 0.5059); 
           vec3 bearColor = vec3(0.9373, 0.2667, 0.2667); 
-          
+
           float noise = hash(id + floor(u_time * 0.4));
           float candleHeight = abs(sin(id.x * 0.4 + u_time * 0.15)) * 0.5 + 0.2;
           float candleCenter = 0.5 + sin(id.x * 0.7 + u_time * 0.1) * 0.15;
-          
+
           float distToCenter = abs(uv.y - candleCenter);
-          
+
           float isBull = step(0.4, hash(id * 2.1));
           vec3 candleCol = mix(bearColor, bullColor, isBull);
-          
+
           float body = step(distToCenter, candleHeight * 0.15) * step(abs(fract(grid.x) - 0.5), 0.2);
           float wick = step(distToCenter, candleHeight * 0.35) * step(abs(fract(grid.x) - 0.5), 0.02);
-          
+
           float gridLine = step(0.99, fract(grid.x)) + step(0.99, fract(grid.y));
           vec3 finalColor = mix(bgColor, bgColor * 1.5, gridLine * 0.1);
-          
+
           finalColor = mix(finalColor, candleCol, (body + wick) * 0.2);
-          
+
           float glow = exp(-distToCenter * 5.0) * 0.05;
           finalColor += bullColor * glow * isBull + bearColor * glow * (1.0 - isBull);
 
@@ -145,19 +147,20 @@ export default function LoginPage() {
         }));
     };
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        const {data, error} = authClient.signIn.email({
+
+        const { error } = await authClient.signIn.email({
             email: formData?.email,
             password: formData?.password,
             callbackURL: "/"
         })
-        console.log('Login Form Request Data:', formData);
-    };
 
-    const handleDemoLogin = () => {
-        console.log('Demo Account Login Requested');
+        if (!error) {
+            toast.success("Login successful")
+        } else {
+            toast.error("Invalid email or password")
+        }
     };
 
     return (
@@ -352,7 +355,7 @@ export default function LoginPage() {
 
                         <footer className="mt-10 text-center">
                             <p className="text-[16px] text-[#bbcabf] leading-[24px]">
-                                Don't have an account?
+                                Don&apos;t have an account?
                                 <Link className="text-[#4edea3] font-bold hover:underline ml-1" href="/auth/register">Create Account
 
                                 </Link>

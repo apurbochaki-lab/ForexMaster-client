@@ -3,15 +3,13 @@
 import { LogoFacebook, LogoLinkedin, CirclePlayFill } from '@gravity-ui/icons';
 import {
     ShieldAlert,
-    ArrowRight,
     TrendingUp,
     ChevronRight,
     Mail,
     Phone,
     MapPin,
     Clock,
-    Send,
-    Twitter
+    Send
 } from 'lucide-react';
 import Link from 'next/link';
 

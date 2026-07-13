@@ -35,7 +35,7 @@ export default function RegisterPage() {
         }
         syncSize();
 
-        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        const gl = canvas.getContext("webgl") as WebGLRenderingContext | null;
         if (!gl) return;
 
         const vs = `

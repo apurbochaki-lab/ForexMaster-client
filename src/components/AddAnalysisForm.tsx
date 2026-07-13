@@ -23,6 +23,7 @@ import Image from "next/image";
 import { imageUpload } from "@/lib/core/imgUpload";
 import { postAnalysis } from "@/lib/actions/analysis";
 import toast from "react-hot-toast";
+import { getSession } from "@/lib/core/session";
 
 const currencyPairOptions = [
     "EURUSD",
@@ -76,9 +77,16 @@ const tradingTypeOptions = [
     "⚠️ News Trading"
 ]
 
-export default function AnalysisForm({ user }) {
+
+type AnalysisFormProps = {
+    user: Awaited<ReturnType<typeof getSession>>;
+};
+
+export default function AnalysisForm({ user }: AnalysisFormProps) {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+    console.log(selectedFile)
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
@@ -99,6 +107,7 @@ export default function AnalysisForm({ user }) {
 
     const handleAddAnalysis = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const form = e.target as HTMLFormElement;
 
         const formData = new FormData(e.target as HTMLFormElement);
         const data = Object.fromEntries(formData.entries());
@@ -107,11 +116,19 @@ export default function AnalysisForm({ user }) {
         let imgUrl = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
 
         // If Image not selected validation
-        if (data.image && data.image.size > 0) {
-            const uploadedImg = await imageUpload(data.image)
+        // if (data.image && data.image.size > 0) {
+        //     const uploadedImg = await imageUpload(data.image)
+
+        //     if (uploadedImg?.url) {
+        //         imgUrl = uploadedImg?.url
+        //     }
+        // }
+
+        if (selectedFile) {
+            const uploadedImg = await imageUpload(selectedFile);
 
             if (uploadedImg?.url) {
-                imgUrl = uploadedImg?.url
+                imgUrl = uploadedImg.url;
             }
         }
 
@@ -130,7 +147,8 @@ export default function AnalysisForm({ user }) {
             toast.success("Analysis Posted")
 
             // Clear form
-            e.target.reset();
+            // e.target.reset();
+            form.reset();
             setImagePreview(null);
             setSelectedFile(null);
         }
