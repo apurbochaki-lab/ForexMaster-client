@@ -9,7 +9,6 @@ export const metadata = {
 export default async function AddAnalysisPage() {
 
     const user = await getSession()
-    console.log(user)
 
     return (
         <section className="min-h-screen bg-[#0F172A] py-16 pt-25 px-4 sm:px-6 lg:px-8">

@@ -4,6 +4,7 @@ import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
+import toast from 'react-hot-toast';
 
 export default function RegisterPage() {
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -163,19 +164,20 @@ export default function RegisterPage() {
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const { data, error } = await authClient.signUp.email({
+        const { error } = await authClient.signUp.email({
             name: formData?.name,
             email: formData?.email,
             password: formData?.password,
             image: formData?.image
         })
 
+        // Validation & error handling
         if (!error) {
+            toast.success("Welcome Home...")
             router.push("/")
-            console.log(data, error)
+        } else {
+            toast.error("Something went wrong! Try later")
         }
-
-        console.log('Registration Data:', formData);
     };
 
     return (

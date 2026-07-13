@@ -150,6 +150,7 @@ export default function LoginPage() {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        // Login logic
         const { error } = await authClient.signIn.email({
             email: formData?.email,
             password: formData?.password,
