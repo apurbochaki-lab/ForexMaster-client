@@ -8,6 +8,7 @@ import {
     BookOpen,
     CheckCircle2
 } from 'lucide-react';
+import Link from 'next/link';
 
 // কেন ForexMaster সেরা তার ডেটা অ্যারে
 const features = [
@@ -90,12 +91,16 @@ export default function WhyChooseUs() {
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <button className="bg-[#4edea3] hover:bg-[#4edea3]/90 text-[#003824] px-8 py-4 rounded-xl text-lg font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-200 hover:scale-105 active:scale-95">
-                                Explore Signals
-                            </button>
-                            <button className="border-2 border-[#ffb95f] text-[#ffb95f] hover:bg-[#ffb95f]/10 px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 active:scale-95">
-                                Learn More
-                            </button>
+                            <Link href="/analysis">
+                                <button className="bg-[#4edea3] hover:bg-[#4edea3]/90 text-[#003824] px-8 py-4 rounded-xl text-lg font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-200 hover:scale-105 active:scale-95">
+                                    Explore Analysis
+                                </button>
+                            </Link>
+                            <Link href="/blog">
+                                <button className="border-2 border-[#ffb95f] text-[#ffb95f] hover:bg-[#ffb95f]/10 px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 active:scale-95">
+                                    Learn More
+                                </button>
+                            </Link>
                         </div>
 
                         <div className="pt-8 flex items-center gap-8 border-t border-white/5">

@@ -43,7 +43,7 @@ export default function ForexPerformance() {
     ];
 
     return (
-        <main className="flex-grow pt-32 pb-12 px-6 relative z-10 bg-[#0b1326] text-[#dae2fd] min-h-screen font-sans overflow-x-hidden">
+        <main className="flex-grow pt-18 pb-12 px-6 relative z-10 bg-[#0b1326] text-[#dae2fd] min-h-screen font-sans overflow-x-hidden">
 
             {/* Background Glows & Effects */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">

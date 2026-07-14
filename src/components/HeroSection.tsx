@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 
 export default function HeroSection() {
@@ -110,13 +111,15 @@ export default function HeroSection() {
 
                         {/* CTA Group */}
                         <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                            <button className="px-8 py-4 bg-[#10b981] text-[#00422b] text-[18px] font-semibold rounded-xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all">
-                                Explore Signals
-                                <span className="material-symbols-outlined">trending_up</span>
-                            </button>
-                            <button className="px-8 py-4 border border-[#ffb95f] text-[#ffb95f] text-[18px] font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[#ffb95f]/10 active:scale-95 transition-all">
+                            <Link href="/analysis">
+                                <button className="px-8 py-4 bg-[#10b981] text-[#00422b] text-[18px] font-semibold rounded-xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all">
+                                    Explore Analysis
+                                    <span className="material-symbols-outlined">trending_up</span>
+                                </button>
+                            </Link>
+                            {/* <button className="px-8 py-4 border border-[#ffb95f] text-[#ffb95f] text-[18px] font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[#ffb95f]/10 active:scale-95 transition-all">
                                 Learn More
-                            </button>
+                            </button> */}
                         </div>
                     </div>
 

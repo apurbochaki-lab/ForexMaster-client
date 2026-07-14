@@ -11,6 +11,7 @@ interface StatCardProps {
 
 // রিইউজেবল মিনিমাল স্ট্যাটস কার্ড
 const StatCard = ({ icon, value, label, subText, isAccent = false }: StatCardProps) => (
+
     <div className="border border-zinc-800 bg-zinc-900/40 p-6 rounded-xl flex flex-col justify-between transition-all duration-300 hover:border-zinc-700">
         <div className="space-y-4">
             <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${isAccent ? 'bg-[#ffb95f]/10 text-[#ffb95f]' : 'bg-[#4edea3]/10 text-[#4edea3]'}`}>

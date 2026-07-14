@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export default function MarketCategories() {
@@ -53,9 +54,10 @@ export default function MarketCategories() {
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
                             <span className="text-[#4edea3] text-xs font-semibold">32 Instruments Available</span>
-                            <a className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm" href="#">
+                            <Link href="/analysis"
+                                className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm">
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -81,9 +83,10 @@ export default function MarketCategories() {
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
                             <span className="text-[#4edea3] text-xs font-semibold">48 Instruments Available</span>
-                            <a className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm" href="#">
+                            <Link href="/analysis"
+                                className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm">
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -109,9 +112,10 @@ export default function MarketCategories() {
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
                             <span className="text-[#4edea3] text-xs font-semibold">24 Instruments Available</span>
-                            <a className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm" href="#">
+                            <Link href="/analysis"
+                                className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm">
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -196,9 +200,10 @@ export default function MarketCategories() {
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
                             <span className="text-[#4edea3] text-xs font-semibold">12 Instruments Available</span>
-                            <a className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm" href="#">
+                            <Link href="/analysis"
+                                className="text-[#CBD5E1] group-hover:text-[#4edea3] transition-colors flex items-center gap-1 text-sm">
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
