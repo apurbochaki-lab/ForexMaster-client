@@ -1,5 +1,6 @@
 import { Analysis } from "@/app/analysis/manage/page";
 import { serverFetch, serverMutation } from "../core/server"
+import { protectedFetch } from "../core/token/getTokenServer";
 
 // All analysis data
 export const getAnalysis = async (): Promise<Analysis[]> => {
@@ -19,7 +20,7 @@ export const getAnalysisById = async (id: string): Promise<Analysis> => {
 
 // Manage Analysis --> get only author data
 export const getMyAnalysis = async (authorId: string | undefined): Promise<Analysis[]> => {
-    const data = await serverFetch<Analysis[]>(`/api/my-analysis?authorId=${authorId}`);
+    const data = await protectedFetch<Analysis[]>(`/api/my-analysis?authorId=${authorId}`);
     return data;
 }
 

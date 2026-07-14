@@ -1,10 +1,13 @@
+import { authHeaderClient } from "./token/getTokenClient";
+
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export const serverMutation = async (path: string, data: object, method = "POST") => {
     const res = await fetch(`${baseUrl}${path}`, {
         method: method,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            ...await authHeaderClient()
         },
         body: JSON.stringify(data)
     })
@@ -21,6 +24,11 @@ export const serverMutation = async (path: string, data: object, method = "POST"
 
 
 export const serverFetch = async <T>(path: string): Promise<T> => {
-    const res = await fetch(`${baseUrl}${path}`);
+    const res = await fetch(`${baseUrl}${path}`, {
+        headers: {
+            'Content-Type' : 'application/json',
+            ...await authHeaderClient()
+        }
+    });
     return res.json();
 }
