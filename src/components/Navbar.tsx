@@ -6,6 +6,7 @@ import { Bars, House, ChartAreaStacked, ArrowShapeTurnUpLeft, LayoutCells, FileT
 import { Button, Drawer, Spinner } from "@heroui/react";
 import { useMemo, useState } from "react";
 import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 
 const Navbar = () => {
     const pathName = usePathname();
@@ -53,9 +54,14 @@ const Navbar = () => {
             <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
                 {/* Brand Logo */}
                 <div className="flex items-center gap-2">
-                    <span className="text-[28px] font-bold text-[#dae2fd]">
-                        ForexMaster
-                    </span>
+                    <Link href="/">
+                        <Image
+                            src="/nav-logo-1.png"
+                            alt="ForexMaster Brand Logo"
+                            width={220}
+                            height={200}
+                        />
+                    </Link>
                 </div>
 
                 {/* ================= DESKTOP VIEW ================= */}
@@ -130,11 +136,19 @@ const Navbar = () => {
                                 <Drawer.Dialog className="bg-[#0b1326] h-full flex flex-col m-0 rounded-none">
                                     <Drawer.CloseTrigger
                                         onPress={() => setIsOpen(false)}
-                                        className="text-white/70 hover:text-white top-4 right-4 absolute z-50"
+                                        className="text-red-500 bg-red-100 hover:text-white top-4 right-4 absolute z-50"
                                     />
                                     <Drawer.Header className="border-b border-white/5 px-6 py-5">
-                                        <Drawer.Heading className="text-xl font-bold text-[#dae2fd]">
-                                            ForexMaster
+                                        <Drawer.Heading className="mt-5"
+                                            onClick={() => setIsOpen(false)}>
+                                            <Link href="/" >
+                                                <Image
+                                                    src="/nav-logo-1.png"
+                                                    alt="ForexMaster Brand Logo"
+                                                    width={200}
+                                                    height={200}
+                                                />
+                                            </Link>
                                         </Drawer.Heading>
                                     </Drawer.Header>
 

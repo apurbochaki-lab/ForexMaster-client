@@ -1,0 +1,298 @@
+[{
+  "title": "GBPUSD Trendline Break Confirmation",
+  "currentCondition": "Price broke descending trendline with strong bullish candles.",
+  "description": "GBPUSD successfully broke above the descending trendline that had controlled price movement for several sessions. After the breakout, price performed a healthy retest of the broken trendline and produced bullish confirmation candles. This behavior often indicates a shift in market structure from bearish to bullish. If the retest level continues to hold, buyers may target the next major resistance zone while maintaining bullish momentum across lower timeframes.",
+  "pair": "GBPUSD",
+  "strategy": "Trendline",
+  "timeframe": "H4",
+  "marketBias": "Bullish",
+  "confidence": "High",
+  "tradingType": "Swing Trading",
+  "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:46:00.000Z"
+  }
+},
+{
+  "title": "AUDUSD Bullish Continuation Setup",
+  "currentCondition": "Higher highs and higher lows remain intact.",
+  "description": "AUDUSD continues to maintain a strong bullish market structure characterized by higher highs and higher lows. Price action is respecting dynamic support areas and buyers continue to defend pullbacks aggressively. As long as the current structure remains intact, continuation buying opportunities remain favorable. Traders may monitor bullish engulfing candles or rejection wicks near support levels for additional confirmation before entering positions.",
+  "pair": "AUDUSD",
+  "strategy": "Price Action",
+  "timeframe": "H1",
+  "marketBias": "Bullish",
+  "confidence": "Medium",
+  "tradingType": "Momentum Trading",
+  "image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:48:00.000Z"
+  }
+},
+{
+  "title": "USDCAD Supply Zone Holding Strong",
+  "currentCondition": "Price reacted from major supply area.",
+  "description": "USDCAD entered a previously identified institutional supply zone where significant selling pressure emerged immediately. Large bearish candles and rejection wicks indicate that sellers are actively defending this area. Unless buyers can establish a strong close above the supply zone, further downside movement towards lower demand areas remains likely. Monitoring lower timeframe bearish confirmations can improve entry precision for continuation trades.",
+  "pair": "USDCAD",
+  "strategy": "Supply & Demand",
+  "timeframe": "H4",
+  "marketBias": "Bearish",
+  "confidence": "High",
+  "tradingType": "Swing Trading",
+  "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:49:00.000Z"
+  }
+},
+{
+  "title": "NZDUSD Multi-Timeframe Bullish Alignment",
+  "currentCondition": "H4 and D1 trends are aligned upward.",
+  "description": "NZDUSD is showing strong bullish alignment across multiple timeframes with both H4 and D1 charts confirming upward momentum. Multi-timeframe analysis significantly improves trade probability by ensuring trend agreement across higher and lower charts. Pullbacks into key support areas on lower timeframes may provide favorable risk to reward opportunities while the higher timeframe trend remains bullish.",
+  "pair": "NZDUSD",
+  "strategy": "Multi-Timeframe Analysis",
+  "timeframe": "H4",
+  "marketBias": "Bullish",
+  "confidence": "High",
+  "tradingType": "Swing Trading",
+  "image": "https://images.unsplash.com/photo-1642104704074-907c0698cbd9",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:50:00.000Z"
+  }
+},
+{
+  "title": "USDCHF Price Rejected From Weekly Resistance",
+  "currentCondition": "Weekly resistance remains respected.",
+  "description": "USDCHF tested a major weekly resistance level but failed to sustain bullish momentum above it. Strong rejection candles and long upper wicks suggest seller dominance around this region. Weekly resistance levels often attract institutional order flow and can influence market direction for extended periods. Continued weakness below this area may encourage sellers to target previous swing lows over the coming sessions.",
+  "pair": "USDCHF",
+  "strategy": "Support & Resistance",
+  "timeframe": "W1",
+  "marketBias": "Bearish",
+  "confidence": "Medium",
+  "tradingType": "Position Trading",
+  "image": "https://images.unsplash.com/photo-1624996379697-f01d168b1a52",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:51:00.000Z"
+  }
+},
+{
+ 
+  "title": "BTCUSD Breaking Major Resistance",
+  "currentCondition": "Bitcoin is approaching breakout confirmation.",
+  "description": "BTCUSD is trading directly beneath a major resistance zone after several sessions of consolidation. Repeated tests of resistance generally weaken seller strength and increase the probability of a breakout. A strong candle close above resistance accompanied by increasing volume could trigger momentum buying and attract additional market participants into the move.",
+  "pair": "BTCUSD",
+  "strategy": "Breakout",
+  "timeframe": "D1",
+  "marketBias": "Bullish",
+  "confidence": "High",
+  "tradingType": "Momentum Trading",
+  "image": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:53:00.000Z"
+  }
+},
+{
+
+  "title": "GBPUSD Support Retest Opportunity",
+  "currentCondition": "Price returned to previous breakout zone.",
+  "description": "After breaking above resistance, GBPUSD has returned to retest the breakout area which is now acting as support. Successful retests are an important component of breakout trading because they confirm that market participants accept the new price level. Bullish price action around this zone could provide attractive continuation opportunities with favorable risk to reward conditions.",
+  "pair": "GBPUSD",
+  "strategy": "Breakout",
+  "timeframe": "H1",
+  "marketBias": "Bullish",
+  "confidence": "Medium",
+  "tradingType": "Intraday Trading",
+  "image": "https://images.unsplash.com/photo-1640161704729-cbe966a08476",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:55:00.000Z"
+  }
+},
+{
+
+  "title": "USDJPY Lower High Formation",
+  "currentCondition": "Bearish structure is developing.",
+  "description": "USDJPY is beginning to form lower highs after failing to continue its previous bullish momentum. This shift in market structure often signals weakening buyer strength and growing seller participation. Traders may look for bearish confirmation candles near resistance areas while monitoring whether lower lows begin to develop to fully validate the trend reversal scenario.",
+  "pair": "USDJPY",
+  "strategy": "Price Action",
+  "timeframe": "H1",
+  "marketBias": "Bearish",
+  "confidence": "Medium",
+  "tradingType": "Scalping Trading",
+  "image": "https://images.unsplash.com/photo-1642790106117-e829e14a795f",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:56:00.000Z"
+  }
+},
+{
+
+  "title": "AUDUSD Range Expansion Expected",
+  "currentCondition": "Price compression suggests upcoming volatility.",
+  "description": "AUDUSD is currently trading inside a tight range with decreasing volatility and smaller candle bodies. Such compression phases are often followed by explosive directional moves once market participants commit to a breakout direction. Traders should remain patient and wait for confirmation rather than anticipating the breakout prematurely.",
+  "pair": "AUDUSD",
+  "strategy": "Breakout",
+  "timeframe": "M30",
+  "marketBias": "Neutral",
+  "confidence": "Low",
+  "tradingType": "Breakout Trading",
+  "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:57:00.000Z"
+  }
+},
+{
+  "title": "NZDUSD Demand Zone Reaction",
+  "currentCondition": "Strong bullish candles emerging from demand area.",
+  "description": "NZDUSD entered a previously respected demand zone where buyers immediately returned to the market. Strong bullish candles and rejection wicks indicate that institutional demand may still exist within this area. If buyers continue defending the zone successfully, price could revisit recent highs while maintaining a favorable bullish structure.",
+  "pair": "NZDUSD",
+  "strategy": "Supply & Demand",
+  "timeframe": "H1",
+  "marketBias": "Bullish",
+  "confidence": "Medium",
+  "tradingType": "Intraday Trading",
+  "image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T13:59:00.000Z"
+  }
+},
+{
+  "title": "USDCHF Multi-Timeframe Confirmation",
+  "currentCondition": "H1 and H4 are aligned bearish.",
+  "description": "USDCHF is showing bearish agreement across multiple timeframes with H1 and H4 both producing lower highs and lower lows. Multi-timeframe confirmation reduces false signals and improves overall trade quality. Traders can use lower timeframe pullbacks to refine entries while aligning with the broader bearish trend direction.",
+  "pair": "USDCHF",
+  "strategy": "Multi-Timeframe Analysis",
+  "timeframe": "H4",
+  "marketBias": "Bearish",
+  "confidence": "High",
+  "tradingType": "Swing Trading",
+  "image": "https://images.unsplash.com/photo-1642104704074-907c0698cbd9",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T14:00:00.000Z"
+  }
+},
+{
+  "title": "Gold Waiting For CPI Data",
+  "currentCondition": "Price movement slowed ahead of economic release.",
+  "description": "Gold traders are waiting for upcoming CPI figures which historically generate substantial volatility across precious metals markets. News events can create sharp liquidity grabs and false breakouts before establishing a clear trend direction. Traders should focus on post-news market structure and avoid overexposure during periods of uncertainty.",
+  "pair": "XAUUSD (GOLD)",
+  "strategy": "Price Action",
+  "timeframe": "M15",
+  "marketBias": "Neutral",
+  "confidence": "Low",
+  "tradingType": "⚠️ News Trading",
+  "image": "https://i.ibb.co/mC8QTK4h/Screenshot-1.png",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T14:01:00.000Z"
+  }
+},
+{
+
+  "title": "BTCUSD Weekly Bull Run Continues",
+  "currentCondition": "Weekly momentum remains strong.",
+  "description": "BTCUSD continues to print strong bullish candles on the weekly timeframe while maintaining momentum above previous resistance levels. Sustained momentum combined with healthy pullbacks often indicates institutional participation in the trend. Traders may continue looking for continuation setups until signs of distribution or trend exhaustion begin to appear.",
+  "pair": "BTCUSD",
+  "strategy": "Price Action",
+  "timeframe": "W1",
+  "marketBias": "Bullish",
+  "confidence": "High",
+  "tradingType": "Position Trading",
+  "image": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T14:02:00.000Z"
+  }
+},
+{
+
+  "title": "EURUSD Daily Resistance Holding",
+  "currentCondition": "Price failed to close above resistance.",
+  "description": "EURUSD attempted multiple breaks above the daily resistance level but failed to establish acceptance beyond the zone. Repeated failures often strengthen resistance and increase the probability of downside movement. Traders may continue monitoring bearish confirmations while targeting nearby support levels as long as resistance remains respected.",
+  "pair": "EURUSD",
+  "strategy": "Support & Resistance",
+  "timeframe": "D1",
+  "marketBias": "Bearish",
+  "confidence": "Medium",
+  "tradingType": "Swing Trading",
+  "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T14:03:00.000Z"
+  }
+},
+{
+
+  "title": "GBPUSD Momentum Buyers Returning",
+  "currentCondition": "Bullish volume increased significantly.",
+  "description": "GBPUSD is experiencing increasing bullish momentum with expanding candle bodies and stronger buying participation. Momentum trading strategies focus on capturing continuation moves once market strength becomes evident. Traders should monitor pullbacks for entry opportunities while momentum conditions remain favorable.",
+  "pair": "GBPUSD",
+  "strategy": "Price Action",
+  "timeframe": "M30",
+  "marketBias": "Bullish",
+  "confidence": "Medium",
+  "tradingType": "Momentum Trading",
+  "image": "https://images.unsplash.com/photo-1624996379697-f01d168b1a52",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T14:04:00.000Z"
+  }
+},
+{
+ 
+  "title": "Gold H4 Breakout Setup Forming",
+  "currentCondition": "Price is squeezing near resistance.",
+  "description": "XAUUSD is currently consolidating directly beneath a significant H4 resistance level while volatility continues to decrease. Price compression below resistance often indicates accumulation before a directional expansion move. A confirmed breakout supported by strong candle closes and increased momentum could attract additional buyers and trigger a continuation rally toward higher resistance zones. Traders should wait for confirmation rather than anticipating the breakout early.",
+  "pair": "XAUUSD (GOLD)",
+  "strategy": "Breakout",
+  "timeframe": "H4",
+  "marketBias": "Bullish",
+  "confidence": "High",
+  "tradingType": "Breakout Trading",
+  "image": "https://i.ibb.co/mC8QTK4h/Screenshot-1.png",
+  "authorId": "6a5352069656cb3834f848b0",
+  "authorName": "Apurbo Chaki",
+  "createdAt": {
+    "$date": "2026-07-13T14:05:00.000Z"
+  }
+},
+{
+ 
+  "title": "BUY SETUP ✅🚀",
+  "currentCondition": "sadfdsf",
+  "description": "asdfsdaf",
+  "pair": "XAUUSD (GOLD)",
+  "strategy": "Supply & Demand",
+  "timeframe": "M30",
+  "marketBias": "Bullish",
+  "confidence": "High",
+  "tradingType": "Breakout Trading",
+  "image": "https://i.ibb.co/gZnN2PPS/chart.png",
+  "authorId": "6a55d7d757eb3096309c3c83",
+  "authorName": "Nirjon Dev",
+  "createdAt": {
+    "$date": "2026-07-14T13:07:59.151Z"
+  }
+}]

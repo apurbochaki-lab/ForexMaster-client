@@ -1,11 +1,12 @@
+import FeaturedSection from "@/components/FeaturedSection";
 import ForexFaq from "@/components/ForexFaq";
 import ForexPerformance from "@/components/ForexPerformance";
 import HeroSection from "@/components/HeroSection";
 import MarketCategories from "@/components/MarketCategories";
 import TrustedByTraders from "@/components/TrustedByTraders";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Image from "next/image";
-import BlogPage from "./blog/page";
+
+
 
 export default function Home() {
 
@@ -30,6 +31,7 @@ export default function Home() {
   return (
     <div className="">
       <HeroSection/>
+      <FeaturedSection/>
       <MarketCategories/>
       <WhyChooseUs/>
       <TrustedByTraders/>
