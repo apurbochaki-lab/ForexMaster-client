@@ -25,8 +25,9 @@ export const serverMutation = async (path: string, data: object, method = "POST"
 
 export const serverFetch = async <T>(path: string): Promise<T> => {
     const res = await fetch(`${baseUrl}${path}`, {
+        cache: "no-store",
         headers: {
-            'Content-Type' : 'application/json',
+            'Content-Type': 'application/json',
             ...await authHeaderClient()
         }
     });
