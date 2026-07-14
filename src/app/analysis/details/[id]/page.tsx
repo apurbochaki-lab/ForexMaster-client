@@ -10,7 +10,8 @@ type ParamsProp = {
 
 const AnalysisDetailsPage = async ({ params }: ParamsProp) => {
     const { id } = await params;
-    const details = await getAnalysisById(id) || [];
+    const details = await getAnalysisById(id);
+    // console.log(details)
 
     // Initial check jodi data na thake
     if (!details || Object.keys(details).length === 0) {

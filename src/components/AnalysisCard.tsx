@@ -1,5 +1,6 @@
 'use client';
 
+import { Analysis } from '@/app/analysis/manage/page';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
 
@@ -22,11 +23,15 @@ interface AnalysisItem {
     };
 }
 
+// interface AnalysisCardProps {
+//     analysis: AnalysisItem[];
+// }
+
 interface AnalysisCardProps {
-    analysis: AnalysisItem[];
+    analysis: Analysis[]
 }
 
-export default function AnalysisCard({ analysis = [] }: AnalysisCardProps) {
+export default function AnalysisCard({ analysis }: AnalysisCardProps) {
     // Search & Filter States
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedBias, setSelectedBias] = useState('ALL');
@@ -168,7 +173,7 @@ export default function AnalysisCard({ analysis = [] }: AnalysisCardProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full bg-transparent">
                         {filteredAnalysis.map((item) => {
                             const uniqueId = item?._id;
-                            const targetDate = item.createdAt?.$date || new Date().toISOString();
+                            const targetDate = item.createdAt || new Date().toISOString();
 
                             return (
                                 <article
@@ -228,7 +233,7 @@ export default function AnalysisCard({ analysis = [] }: AnalysisCardProps) {
                                             <Link href={`/analysis/details/${uniqueId}`}>
                                                 <button
                                                     type="button"
-                                                    onClick={() => console.log(`Routing for ID: ${uniqueId}`)}
+                                                    // onClick={() => console.log(`Routing for ID: ${uniqueId}`)}
                                                     className="w-full bg-[#4edea3] text-[#003824] hover:bg-[#6ffbbe] py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.97] shadow-sm font-['Outfit'] cursor-pointer"
                                                 >
                                                     <span>View Details</span>

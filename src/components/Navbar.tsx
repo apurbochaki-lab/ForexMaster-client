@@ -42,7 +42,7 @@ const Navbar = () => {
         if (user) {
             links.push(
                 { label: "Add Analysis", href: "/analysis/add", icon: ArrowShapeTurnUpLeft },
-                { label: "Manage Analysis", href: "/manage-analysis", icon: LayoutCells }
+                { label: "Manage Analysis", href: "/analysis/manage", icon: LayoutCells }
             );
         }
         return links;

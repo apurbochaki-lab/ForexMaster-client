@@ -86,8 +86,6 @@ export default function AnalysisForm({ user }: AnalysisFormProps) {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-    console.log(selectedFile)
-
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
@@ -138,7 +136,6 @@ export default function AnalysisForm({ user }: AnalysisFormProps) {
             authorId: user?.id,
             authorName: user?.name
         }
-        console.log(newData);
 
         // POST data to the database
         const res = await postAnalysis(newData)
@@ -152,8 +149,6 @@ export default function AnalysisForm({ user }: AnalysisFormProps) {
             setImagePreview(null);
             setSelectedFile(null);
         }
-
-        console.log(res);
     };
 
 
