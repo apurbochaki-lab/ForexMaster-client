@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
+import { motion, Variants } from 'framer-motion';
 
 export default function HeroSection() {
     const glowRef = useRef<HTMLDivElement>(null);
@@ -20,6 +21,56 @@ export default function HeroSection() {
             document.removeEventListener('mousemove', handleMouseMove);
         };
     }, []);
+
+    // Explicitly typed using Variants from 'framer-motion' to fix TS error
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1,
+            },
+        },
+    };
+
+    const itemVariants: Variants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { type: 'spring', stiffness: 100, damping: 20 },
+        },
+    };
+
+    const cardContainerVariants: Variants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.6, ease: 'easeOut', delay: 0.3 },
+        },
+    };
+
+    const floatingCardLeftVariants: Variants = {
+        hidden: { opacity: 0, x: -30, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            transition: { type: 'spring', stiffness: 80, damping: 15, delay: 0.7 },
+        },
+    };
+
+    const floatingCardRightVariants: Variants = {
+        hidden: { opacity: 0, x: 30, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            transition: { type: 'spring', stiffness: 80, damping: 15, delay: 0.8 },
+        },
+    };
 
     return (
         <div className="bg-[#0b1326] text-[#dae2fd] font-['Outfit',sans-serif] overflow-x-hidden min-h-screen">
@@ -86,15 +137,20 @@ export default function HeroSection() {
 
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-12 items-center">
                     {/* Left Column Content */}
-                    <div className="flex flex-col gap-6">
+                    <motion.div 
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="flex flex-col gap-6"
+                    >
                         {/* Trust Badge */}
-                        <div className="inline-flex items-center gap-2 bg-[#222a3d] px-4 py-2 rounded-full w-fit">
+                        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-[#222a3d] px-4 py-2 rounded-full w-fit">
                             <span className="material-symbols-outlined text-[#4edea3]" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
                             <span className="text-[12px] font-semibold tracking-wider text-[#CBD5E1]">Trusted by Forex Traders Worldwide</span>
-                        </div>
+                        </motion.div>
 
                         {/* Headline */}
-                        <div className="flex flex-col gap-2">
+                        <motion.div variants={itemVariants} className="flex flex-col gap-2">
                             <h1 className="text-[40px] md:text-[64px] font-bold leading-tight tracking-tight">
                                 <span className="text-[#dae2fd]">Master the Market with</span> <br />
                                 <span className="text-[#4edea3]">Professional</span> <span className="text-[#dae2fd]">Forex Analysis</span>
@@ -102,31 +158,33 @@ export default function HeroSection() {
                             <h2 className="text-[36px] font-semibold leading-tight">
                                 Trade <span className="text-[#4edea3]">Smarter</span>, Not Harder.
                             </h2>
-                        </div>
+                        </motion.div>
 
                         {/* Subheading */}
-                        <p className="text-[18px] leading-relaxed text-[#CBD5E1] max-w-[600px]">
+                        <motion.p variants={itemVariants} className="text-[18px] leading-relaxed text-[#CBD5E1] max-w-[600px]">
                             Access institutional-grade market analysis, trade ideas, risk management insights, and high-quality forex signals designed for modern traders.
-                        </p>
+                        </motion.p>
 
                         {/* CTA Group */}
-                        <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mt-4">
                             <Link href="/analysis">
                                 <button className="px-8 py-4 bg-[#10b981] text-[#00422b] text-[18px] font-semibold rounded-xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all">
                                     Explore Analysis
                                     <span className="material-symbols-outlined">trending_up</span>
                                 </button>
                             </Link>
-                            {/* <button className="px-8 py-4 border border-[#ffb95f] text-[#ffb95f] text-[18px] font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[#ffb95f]/10 active:scale-95 transition-all">
-                                Learn More
-                            </button> */}
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
 
                     {/* Right Column Content */}
                     <div className="relative flex justify-center items-center mt-12 md:mt-0">
                         {/* Market Dashboard Card */}
-                        <div className="glass-card w-full max-w-[420px] p-6 rounded-2xl relative animate-float shadow-2xl z-10">
+                        <motion.div 
+                            variants={cardContainerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="glass-card w-full max-w-[420px] p-6 rounded-2xl relative animate-float shadow-2xl z-10"
+                        >
                             <div className="flex justify-between items-center mb-6">
                                 <div className="flex flex-col">
                                     <span className="text-[12px] font-semibold tracking-wider text-[#bbcabf]">Active Signal</span>
@@ -171,10 +229,15 @@ export default function HeroSection() {
                                 <span className="text-[#bbcabf]">Risk/Reward</span>
                                 <span className="text-[#ffb95f] font-bold">1:2.5</span>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Floating Mini Cards */}
-                        <div className="absolute -top-10 -right-4 md:-right-8 glass-card p-4 rounded-xl shadow-xl animate-float-delayed z-20">
+                        <motion.div 
+                            variants={floatingCardRightVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="absolute -top-10 -right-4 md:-right-8 glass-card p-4 rounded-xl shadow-xl animate-float-delayed z-20"
+                        >
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-[#4edea3]/10 flex items-center justify-center">
                                     <span className="material-symbols-outlined text-[#4edea3]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
@@ -184,9 +247,14 @@ export default function HeroSection() {
                                     <span className="text-[28px] font-semibold text-[#4edea3]">87%</span>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="absolute -bottom-10 -left-4 md:-left-8 glass-card p-4 rounded-xl shadow-xl animate-float z-20">
+                        <motion.div 
+                            variants={floatingCardLeftVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="absolute -bottom-10 -left-4 md:-left-8 glass-card p-4 rounded-xl shadow-xl animate-float z-20"
+                        >
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-[#ffb95f]/10 flex items-center justify-center">
                                     <span className="material-symbols-outlined text-[#ffb95f]" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
@@ -196,7 +264,7 @@ export default function HeroSection() {
                                     <span className="text-[28px] font-semibold text-[#ffb95f]">420+</span>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </main>

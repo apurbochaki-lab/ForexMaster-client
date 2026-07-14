@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ShieldCheck, Users, ArrowUpRight, RefreshCw, TrendingUp, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 interface FAQItem {
     question: string;
@@ -49,15 +50,58 @@ export default function ForexFaq() {
         }
     ];
 
-    return (
-        <section className='pb-20 bg-[#0b1326]'>
-            <div className="w-full text-[#dae2fd] py-16 lg:py-24 font-sans">
-                <div className="max-w-7xl mx-auto px-6">
+    // Left Column Fade-in Variants with explicit type
+    const leftContainerVariants: Variants = {
+        hidden: { opacity: 0, x: -30 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
 
+    // Staggered list layout for FAQs with explicit type
+    const listVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.05
+            }
+        }
+    };
+
+    // Fixed item variants using 'as const' to resolve TypeScript string literal issue
+    const itemVariants: Variants = {
+        hidden: { opacity: 0, y: 15 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { 
+                type: "spring" as const, 
+                stiffness: 100, 
+                damping: 15 
+            }
+        }
+    };
+
+    return (
+        <section className="pb-20 bg-[#0b1326] relative overflow-hidden">
+            {/* Subtle glow background element */}
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-[#4edea3]/5 rounded-full blur-[100px] pointer-events-none z-0" />
+
+            <div className="w-full text-[#dae2fd] py-16 lg:py-24 font-sans relative z-10">
+                <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
                         {/* Left Column: Branding & Trust */}
-                        <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
+                        <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={leftContainerVariants}
+                            className="lg:col-span-5 space-y-8 lg:sticky lg:top-24"
+                        >
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4edea3]/10 border border-[#4edea3]/20 text-[#4edea3] text-xs font-medium uppercase tracking-wider">
                                 <ShieldCheck size={14} />
                                 Frequently Asked Questions
@@ -74,52 +118,75 @@ export default function ForexFaq() {
                             </div>
 
                             {/* Trust Statistics Card */}
-                            <div className="border border-zinc-800 bg-zinc-900/40 p-6 rounded-xl grid grid-cols-2 gap-6 shadow-xl">
+                            <div className="border border-zinc-800 bg-zinc-900/40 p-6 rounded-xl grid grid-cols-2 gap-6 shadow-xl backdrop-blur-sm">
                                 {stats.map((stat, idx) => (
-                                    <div key={idx} className="space-y-1">
+                                    <div key={idx} className="space-y-1 group cursor-default">
                                         <div className="flex items-center gap-2">
-                                            {stat.icon}
+                                            <div className="transition-transform duration-300 group-hover:scale-110">
+                                                {stat.icon}
+                                            </div>
                                             <span className="text-white font-bold text-xl tracking-tight">{stat.value}</span>
                                         </div>
                                         <p className="text-zinc-500 text-[11px] uppercase tracking-wider font-semibold">{stat.label}</p>
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Right Column: Accordion */}
-                        <div className="lg:col-span-7 space-y-3">
+                        <motion.div 
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            variants={listVariants}
+                            className="lg:col-span-7 space-y-3.5"
+                        >
                             {faqs.map((faq, index) => {
                                 const isOpen = openIndex === index;
                                 return (
-                                    <div
+                                    <motion.div
                                         key={index}
-                                        className={`border rounded-xl transition-all duration-300 bg-zinc-900/20 ${isOpen ? 'border-[#4edea3] bg-zinc-900/40' : 'border-zinc-800/80 hover:border-zinc-700'}`}
+                                        variants={itemVariants}
+                                        className={`border rounded-xl transition-colors duration-300 overflow-hidden bg-zinc-900/20 ${
+                                            isOpen ? 'border-[#4edea3] bg-zinc-900/40 shadow-[0_0_15px_rgba(78,222,163,0.05)]' : 'border-zinc-800/80 hover:border-zinc-700'
+                                        }`}
                                     >
                                         <button
-                                            className="w-full flex justify-between items-center p-5 text-left transition-colors group"
+                                            className="w-full flex justify-between items-center p-5 text-left transition-colors group relative z-10"
                                             onClick={() => toggleAccordion(index)}
+                                            aria-expanded={isOpen}
                                         >
-                                            <span className={`text-[15px] font-medium transition-colors ${isOpen ? 'text-white' : 'text-zinc-300 group-hover:text-white'}`}>
+                                            <span className={`text-[15px] font-medium transition-colors duration-200 pr-4 ${isOpen ? 'text-white' : 'text-zinc-300 group-hover:text-white'}`}>
                                                 {faq.question}
                                             </span>
                                             <ChevronDown
                                                 size={18}
-                                                className={`text-zinc-500 transition-transform duration-300 shrink-0 ml-4 ${isOpen ? 'transform rotate-180 text-[#4edea3]' : ''}`}
+                                                className={`text-zinc-500 transition-transform duration-300 shrink-0 ${
+                                                    isOpen ? 'transform rotate-180 text-[#4edea3]' : 'group-hover:text-zinc-300'
+                                                }`}
                                             />
                                         </button>
 
-                                        <div
-                                            className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-zinc-800/50' : 'max-h-0'}`}
-                                        >
-                                            <p className="p-5 text-zinc-400 text-sm leading-relaxed bg-zinc-950/20">
-                                                {faq.answer}
-                                            </p>
-                                        </div>
-                                    </div>
+                                        <AnimatePresence initial={false}>
+                                            {isOpen && (
+                                                <motion.div
+                                                    key="content"
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
+                                                    className="border-t border-zinc-800/50"
+                                                >
+                                                    <div className="p-5 text-zinc-400 text-sm leading-relaxed bg-zinc-950/20 font-light">
+                                                        {faq.answer}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </motion.div>
                                 );
                             })}
-                        </div>
+                        </motion.div>
 
                     </div>
                 </div>

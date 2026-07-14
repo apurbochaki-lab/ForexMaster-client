@@ -9,6 +9,8 @@ import {
     CheckCircle2
 } from 'lucide-react';
 import Link from 'next/link';
+import * as motion from "framer-motion/client";
+import { Variants } from "framer-motion";
 
 // কেন ForexMaster সেরা তার ডেটা অ্যারে
 const features = [
@@ -57,6 +59,47 @@ const features = [
 ];
 
 export default function WhyChooseUs() {
+
+    // Explicitly typed variants to completely avoid TypeScript compilation errors
+    const leftColumnVariants: Variants = {
+        hidden: { opacity: 0, x: -50 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.08,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const cardVariants: Variants = {
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { type: "spring", stiffness: 90, damping: 14 }
+        }
+    };
+
+    const statsVariants: Variants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.7, ease: "easeOut", delay: 0.3 }
+        }
+    };
+
     return (
         <div className="relative bg-[#0b1326] text-[#dae2fd] overflow-hidden font-sans antialiased min-h-screen">
 
@@ -75,7 +118,13 @@ export default function WhyChooseUs() {
                 <section className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:items-center">
 
                     {/* Left Column (40%) */}
-                    <div className="lg:col-span-5 space-y-6">
+                    <motion.div
+                        variants={leftColumnVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="lg:col-span-5 space-y-6"
+                    >
                         <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#10b981]/15 border border-[#4edea3]/20 text-[#4edea3] text-xs font-semibold uppercase tracking-wider">
                             <CheckCircle2 className="w-4 h-4 mr-1.5" />
                             <span className="w-2 h-2 rounded-full bg-[#4edea3] mr-2 animate-pulse"></span>
@@ -113,16 +162,23 @@ export default function WhyChooseUs() {
                                 <div className="text-[#bbcabf] text-xs font-medium tracking-wide">Active Traders</div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Right Column (60%) */}
                     <div className="lg:col-span-7 relative">
                         <div className="absolute -inset-10 bg-gradient-to-tr from-[#4edea3]/10 via-transparent to-[#ffb95f]/5 blur-[100px] rounded-full opacity-50 pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} />
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-60px" }}
+                            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                        >
                             {features.map((item, index) => (
-                                <div
+                                <motion.div
                                     key={index}
+                                    variants={cardVariants}
                                     className={`backdrop-blur-xl bg-slate-800/70 border border-white/5 p-5 rounded-xl group transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/50 ${item.borderColor}`}
                                 >
                                     <div className={`w-12 h-12 rounded-lg ${item.iconBg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
@@ -130,16 +186,22 @@ export default function WhyChooseUs() {
                                     </div>
                                     <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
                                     <p className="text-[#bbcabf] text-sm leading-snug">{item.description}</p>
-                                </div>
+                                </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
 
 
                 {/* Stats Section */}
                 <section className="mt-10">
-                    <div className="backdrop-blur-xl bg-slate-800/70 border border-white/10 p-8 lg:p-12 rounded-[2rem] flex flex-col md:flex-row justify-around items-center gap-8 text-center hover:shadow-2xl hover:shadow-black/30 transition-shadow">
+                    <motion.div
+                        variants={statsVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-20px" }}
+                        className="backdrop-blur-xl bg-slate-800/70 border border border-white/10 p-8 lg:p-12 rounded-[2rem] flex flex-col md:flex-row justify-around items-center gap-8 text-center hover:shadow-2xl hover:shadow-black/30 transition-shadow"
+                    >
                         <div className="space-y-2">
                             <div className="text-[#4edea3] font-bold text-4xl lg:text-5xl">$2.4B+</div>
                             <div className="text-[#bbcabf] text-xs font-semibold uppercase tracking-widest">Monthly Volume Analyzed</div>
@@ -158,7 +220,7 @@ export default function WhyChooseUs() {
                             <div className="text-[#4edea3] font-bold text-4xl lg:text-5xl">180+</div>
                             <div className="text-[#bbcabf] text-xs font-semibold uppercase tracking-widest">Countries Supported</div>
                         </div>
-                    </div>
+                    </motion.div>
                 </section>
             </main>
         </div>

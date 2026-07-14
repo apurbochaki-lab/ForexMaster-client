@@ -1,7 +1,48 @@
 import Link from 'next/link';
-import React from 'react';
+import * as motion from "framer-motion/client";
+import { Variants } from "framer-motion";
 
 export default function MarketCategories() {
+    
+    // Explicitly typed variants to completely avoid TypeScript compilation errors
+    const headerVariants: Variants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.08,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const cardVariants: Variants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { type: "spring", stiffness: 80, damping: 16 }
+        }
+    };
+
+    const pathVariants: Variants = {
+        hidden: { pathLength: 0, opacity: 0.3 },
+        visible: {
+            pathLength: 1,
+            opacity: 1,
+            transition: { duration: 1.2, ease: "easeInOut", delay: 0.4 }
+        }
+    };
+
     return (
         <section className="relative w-full py-12 md:py-24 overflow-hidden bg-[#0F172A] text-[#dae2fd]">
             {/* Background Decorative Elements */}
@@ -11,7 +52,13 @@ export default function MarketCategories() {
 
             <div className="relative max-w-7xl mx-auto px-6">
                 {/* Section Header */}
-                <div className="mb-16">
+                <motion.div 
+                    variants={headerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="mb-16"
+                >
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-[2px] bg-[#4edea3]"></div>
                         <span className="text-[#4edea3] text-xs font-semibold tracking-widest uppercase">
@@ -24,13 +71,19 @@ export default function MarketCategories() {
                     <p className="text-[#CBD5E1] text-lg max-w-2xl">
                         Access professional market analysis across forex pairs, precious metals, commodities, and digital assets with institutional-grade data precision.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* 3-Column Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-60px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
 
                     {/* Card 1: Major Pairs */}
-                    <div className="glass-card rounded-xl p-5 flex flex-col h-full group">
+                    <motion.div variants={cardVariants} className="glass-card rounded-xl p-5 flex flex-col h-full group">
                         <div className="flex justify-between items-start mb-8">
                             <div className="w-12 h-12 rounded-lg bg-[#4edea3]/20 flex items-center justify-center text-[#4edea3] border border-[#4edea3]/20">
                                 <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -44,12 +97,12 @@ export default function MarketCategories() {
                         </div>
                         <h3 className="text-white text-xl font-semibold mb-3">Major Pairs</h3>
                         <p className="text-[#CBD5E1] text-sm mb-6">
-                            Trade the world's most liquid currency markets including EUR/USD and GBP/USD with tight spreads.
+                            Trade the world&apos;s most liquid currency markets including EUR/USD and GBP/USD with tight spreads.
                         </p>
                         {/* Chart: Upward Trend */}
                         <div className="mb-8 px-2">
                             <svg className="sparkline-svg" preserveAspectRatio="none" viewBox="0 0 100 30">
-                                <path className="sparkline-path stroke-[#4edea3]" d="M0,25 L10,22 L20,24 L30,18 L40,20 L50,12 L60,15 L70,8 L80,10 L90,2 L100,5"></path>
+                                <motion.path variants={pathVariants} className="sparkline-path stroke-[#4edea3]" d="M0,25 L10,22 L20,24 L30,18 L40,20 L50,12 L60,15 L70,8 L80,10 L90,2 L100,5"></motion.path>
                             </svg>
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
@@ -59,10 +112,10 @@ export default function MarketCategories() {
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 2: Minor Pairs */}
-                    <div className="glass-card rounded-xl p-5 flex flex-col h-full group">
+                    <motion.div variants={cardVariants} className="glass-card rounded-xl p-5 flex flex-col h-full group">
                         <div className="flex justify-between items-start mb-8">
                             <div className="w-12 h-12 rounded-lg bg-[#4edea3]/20 flex items-center justify-center text-[#4edea3] border border-[#4edea3]/20">
                                 <span className="material-symbols-outlined">payments</span>
@@ -78,7 +131,7 @@ export default function MarketCategories() {
                         {/* Chart: Stable Trend */}
                         <div className="mb-8 px-2">
                             <svg className="sparkline-svg" preserveAspectRatio="none" viewBox="0 0 100 30">
-                                <path className="sparkline-path stroke-[#4edea3]" d="M0,15 L10,14 L20,16 L30,15 L40,14 L50,15 L60,16 L70,15 L80,14 L90,15 L100,16"></path>
+                                <motion.path variants={pathVariants} className="sparkline-path stroke-[#4edea3]" d="M0,15 L10,14 L20,16 L30,15 L40,14 L50,15 L60,16 L70,15 L80,14 L90,15 L100,16"></motion.path>
                             </svg>
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
@@ -88,10 +141,10 @@ export default function MarketCategories() {
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 3: Exotic Pairs */}
-                    <div className="glass-card rounded-xl p-5 flex flex-col h-full group">
+                    <motion.div variants={cardVariants} className="glass-card rounded-xl p-5 flex flex-col h-full group">
                         <div className="flex justify-between items-start mb-8">
                             <div className="w-12 h-12 rounded-lg bg-[#4edea3]/20 flex items-center justify-center text-[#4edea3] border border-[#4edea3]/20">
                                 <span className="material-symbols-outlined">public</span>
@@ -107,7 +160,7 @@ export default function MarketCategories() {
                         {/* Chart: Volatile Trend */}
                         <div className="mb-8 px-2">
                             <svg className="sparkline-svg" preserveAspectRatio="none" viewBox="0 0 100 30">
-                                <path className="sparkline-path stroke-[#4edea3]" d="M0,25 L10,5 L20,28 L30,10 L40,25 L50,5 L60,28 L70,10 L80,25 L90,5 L100,15"></path>
+                                <motion.path variants={pathVariants} className="sparkline-path stroke-[#4edea3]" d="M0,25 L10,5 L20,28 L30,10 L40,25 L50,5 L60,28 L70,10 L80,25 L90,5 L100,15"></motion.path>
                             </svg>
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
@@ -117,10 +170,10 @@ export default function MarketCategories() {
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 4: Gold (XAU/USD) */}
-                    <div className="glass-card glass-card-amber rounded-xl p-5 flex flex-col h-full group">
+                    <motion.div variants={cardVariants} className="glass-card glass-card-amber rounded-xl p-5 flex flex-col h-full group">
                         <div className="flex justify-between items-start mb-8">
                             <div className="w-12 h-12 rounded-lg bg-[#ffb95f]/20 flex items-center justify-center text-[#ffb95f] border border-[#ffb95f]/20 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                                 <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -138,7 +191,7 @@ export default function MarketCategories() {
                         {/* Chart: Gold Upward Trend */}
                         <div className="mb-8 px-2">
                             <svg className="sparkline-svg" preserveAspectRatio="none" viewBox="0 0 100 30">
-                                <path className="sparkline-path stroke-[#ffb95f]" d="M0,28 L10,25 L20,22 L30,24 L40,18 L50,15 L60,10 L70,12 L80,5 L90,8 L100,2"></path>
+                                <motion.path variants={pathVariants} className="sparkline-path stroke-[#ffb95f]" d="M0,28 L10,25 L20,22 L30,24 L40,18 L50,15 L60,10 L70,12 L80,5 L90,8 L100,2"></motion.path>
                             </svg>
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
@@ -147,10 +200,10 @@ export default function MarketCategories() {
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 5: Crypto CFDs */}
-                    <div className="glass-card glass-card-amber rounded-xl p-5 flex flex-col h-full group">
+                    <motion.div variants={cardVariants} className="glass-card glass-card-amber rounded-xl p-5 flex flex-col h-full group">
                         <div className="flex justify-between items-start mb-8">
                             <div className="w-12 h-12 rounded-lg bg-[#ffb95f]/20 flex items-center justify-center text-[#ffb95f] border border-[#ffb95f]/20 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                                 <span className="material-symbols-outlined">currency_bitcoin</span>
@@ -167,7 +220,7 @@ export default function MarketCategories() {
                         {/* Chart: High-Volatility Orange Trend */}
                         <div className="mb-8 px-2">
                             <svg className="sparkline-svg" preserveAspectRatio="none" viewBox="0 0 100 30">
-                                <path className="sparkline-path stroke-[#ffb95f]" d="M0,15 L10,28 L20,2 L30,25 L40,5 L50,22 L60,8 L70,18 L80,5 L90,28 L100,10"></path>
+                                <motion.path variants={pathVariants} className="sparkline-path stroke-[#ffb95f]" d="M0,15 L10,28 L20,2 L30,25 L40,5 L50,22 L60,8 L70,18 L80,5 L90,28 L100,10"></motion.path>
                             </svg>
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
@@ -176,10 +229,10 @@ export default function MarketCategories() {
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                             </a>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Card 6: Commodities */}
-                    <div className="glass-card rounded-xl p-5 flex flex-col h-full group">
+                    <motion.div variants={cardVariants} className="glass-card rounded-xl p-5 flex flex-col h-full group">
                         <div className="flex justify-between items-start mb-8">
                             <div className="w-12 h-12 rounded-lg bg-[#4edea3]/20 flex items-center justify-center text-[#4edea3] border border-[#4edea3]/20">
                                 <span className="material-symbols-outlined">oil_barrel</span>
@@ -195,7 +248,7 @@ export default function MarketCategories() {
                         {/* Chart: Steady Trend */}
                         <div className="mb-8 px-2">
                             <svg className="sparkline-svg" preserveAspectRatio="none" viewBox="0 0 100 30">
-                                <path className="sparkline-path stroke-[#4edea3]" d="M0,20 L10,18 L20,19 L30,17 L40,18 L50,16 L60,17 L70,15 L80,16 L90,14 L100,15"></path>
+                                <motion.path variants={pathVariants} className="sparkline-path stroke-[#4edea3]" d="M0,20 L10,18 L20,19 L30,17 L40,18 L50,16 L60,17 L70,15 L80,16 L90,14 L100,15"></motion.path>
                             </svg>
                         </div>
                         <div className="pt-6 border-t border-white/5 flex justify-between items-center mt-auto">
@@ -205,9 +258,9 @@ export default function MarketCategories() {
                                 View Analysis <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
-                </div>
+                </motion.div>
             </div>
         </section>
     );
