@@ -3,6 +3,16 @@
 import { Analysis } from '@/app/analysis/manage/page';
 import Link from 'next/link';
 import { useState, useMemo } from 'react';
+// Lucide icons ইম্পোর্ট করা হলো
+import {
+    Search,
+    X,
+    ArrowUpRight,
+    ChevronDown,
+    FileSearch,
+    BarChart2,
+    ArrowRight
+} from 'lucide-react';
 
 interface AnalysisItem {
     _id: string;
@@ -22,10 +32,6 @@ interface AnalysisItem {
         $date: string;
     };
 }
-
-// interface AnalysisCardProps {
-//     analysis: AnalysisItem[];
-// }
 
 interface AnalysisCardProps {
     analysis: Analysis[]
@@ -79,9 +85,8 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
 
     return (
         <>
-            {/* Injecting Fonts & Icons */}
+            {/* এক্সটার্নাল ম্যাটেরিয়াল আইকন ফন্ট লিংক সম্পূর্ণ রিমুভ করা হয়েছে */}
             <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
             <div className="w-full flex flex-col gap-8 bg-transparent">
 
@@ -90,9 +95,7 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
 
                     {/* Search Input Box */}
                     <div className="relative w-full lg:max-w-md flex items-center">
-                        <span className="material-symbols-outlined absolute left-4 text-white/40 pointer-events-none text-xl">
-                            search
-                        </span>
+                        <Search className="absolute left-4 text-white/40 pointer-events-none w-5 h-5" />
                         <input
                             type="text"
                             placeholder="Search by title, condition or pair..."
@@ -105,18 +108,17 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
                                 onClick={() => setSearchQuery('')}
                                 className="absolute right-4 text-white/40 hover:text-white transition-colors cursor-pointer flex items-center"
                             >
-                                <span className="material-symbols-outlined text-lg">close</span>
+                                <X className="w-4 h-4" />
                             </button>
                         )}
                     </div>
 
                     {/* Select Dropdowns Wrapper */}
                     <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+
                         {/* Filter by Pair */}
                         <div className="relative w-full sm:w-44 flex items-center">
-                            <span className="material-symbols-outlined absolute left-3.5 text-white/40 pointer-events-none text-lg">
-                                currency_exchange
-                            </span>
+                            <ArrowUpRight className="absolute left-3.5 text-white/40 pointer-events-none w-4 h-4" />
                             <select
                                 value={selectedPair}
                                 onChange={(e) => setSelectedPair(e.target.value)}
@@ -128,16 +130,12 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
                                     </option>
                                 ))}
                             </select>
-                            <span className="material-symbols-outlined absolute right-3 text-white/40 pointer-events-none text-lg">
-                                keyboard_arrow_down
-                            </span>
+                            <ChevronDown className="absolute right-3 text-white/40 pointer-events-none w-4 h-4" />
                         </div>
 
                         {/* Filter by Market Bias */}
                         <div className="relative w-full sm:w-44 flex items-center">
-                            <span className="material-symbols-outlined absolute left-3.5 text-white/40 pointer-events-none text-lg">
-                                trending_up
-                            </span>
+                            <BarChart2 className="absolute left-3.5 text-white/40 pointer-events-none w-4 h-4 rotate-90" />
                             <select
                                 value={selectedBias}
                                 onChange={(e) => setSelectedBias(e.target.value)}
@@ -149,9 +147,7 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
                                     </option>
                                 ))}
                             </select>
-                            <span className="material-symbols-outlined absolute right-3 text-white/40 pointer-events-none text-lg">
-                                keyboard_arrow_down
-                            </span>
+                            <ChevronDown className="absolute right-3 text-white/40 pointer-events-none w-4 h-4" />
                         </div>
                     </div>
 
@@ -159,12 +155,10 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
 
                 {/* Dynamic Cards Grid Node */}
                 {filteredAnalysis.length === 0 ? (
-                    /* Empty or No Match State Fallback UI */
+                    /* Empty Fallback UI */
                     <div className="w-full flex flex-col items-center justify-center py-24 px-6 text-center border border-dashed border-white/10 rounded-2xl bg-[#11192e]/40">
                         <div className="w-16 h-16 bg-[#171f33] rounded-full flex items-center justify-center mb-4">
-                            <span className="material-symbols-outlined text-3xl text-[#ffb95f]" style={{ fontVariationSettings: "'wght' 200" }}>
-                                manage_search
-                            </span>
+                            <FileSearch className="w-7 h-7 text-[#ffb95f]" />
                         </div>
                         <h3 className="text-lg font-bold text-white mb-1 font-['Outfit']">No results match your filters</h3>
                         <p className="text-[#bbcabf] text-xs max-w-xs font-['Inter']">Try adjusting your search keywords or switching dropdown filter selectors.</p>
@@ -216,10 +210,8 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
                                         {/* Bottom Action Footer */}
                                         <div className="mt-auto pt-4 border-t border-white/5 w-full">
                                             <div className="flex items-center justify-between mb-5">
-                                                <div className="flex items-center text-[#4edea3]">
-                                                    <span className="material-symbols-outlined text-sm mr-2" style={{ fontVariationSettings: "'FILL' 1" }}>
-                                                        insights
-                                                    </span>
+                                                <div className="flex items-center text-[#4edea3] gap-2">
+                                                    <BarChart2 className="w-4 h-4" />
                                                     <span className="text-[11px] font-bold uppercase tracking-widest font-['Outfit']">
                                                         {item.marketBias || 'Live Feed'}
                                                     </span>
@@ -230,14 +222,13 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
                                             </div>
 
                                             {/* CTA Button */}
-                                            <Link href={`/analysis/details/${uniqueId}`}>
+                                            <Link href={`/analysis/details/${uniqueId}`} className="block w-full">
                                                 <button
                                                     type="button"
-                                                    // onClick={() => console.log(`Routing for ID: ${uniqueId}`)}
                                                     className="w-full bg-[#4edea3] text-[#003824] hover:bg-[#6ffbbe] py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.97] shadow-sm font-['Outfit'] cursor-pointer"
                                                 >
                                                     <span>View Details</span>
-                                                    <span className="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+                                                    <ArrowRight className="w-4 h-4 font-bold" />
                                                 </button>
                                             </Link>
                                         </div>
@@ -251,18 +242,18 @@ export default function AnalysisCard({ analysis }: AnalysisCardProps) {
 
             {/* Styled JSX Custom Layout Animations Injector */}
             <style jsx global>{`
-        .glass-card {
-          backdrop-filter: blur(20px);
-          background: rgba(23, 31, 51, 0.65);
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-card:hover {
-          transform: translateY(-6px);
-          border-color: rgba(78, 222, 163, 0.4);
-          box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.7), 0 10px 15px -5px rgba(78, 222, 163, 0.05);
-        }
-      `}</style>
+                .glass-card {
+                  backdrop-filter: blur(20px);
+                  background: rgba(23, 31, 51, 0.65);
+                  border: 1px solid rgba(255, 255, 255, 0.06);
+                  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .glass-card:hover {
+                  transform: translateY(-6px);
+                  border-color: rgba(78, 222, 163, 0.4);
+                  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.7), 0 10px 15px -5px rgba(78, 222, 163, 0.05);
+                }
+            `}</style>
         </>
     );
 }
