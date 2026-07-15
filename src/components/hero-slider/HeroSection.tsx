@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
+// Standard Lucide icons imported
+import { ShieldCheck, TrendingUp, CheckCircle2, Zap } from 'lucide-react';
 
 export default function HeroSection() {
     const glowRef = useRef<HTMLDivElement>(null);
@@ -75,56 +77,48 @@ export default function HeroSection() {
     return (
         <div className="bg-[#0b1326] text-[#dae2fd] font-['Outfit',sans-serif] overflow-x-hidden min-h-screen">
             <style>{`
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            line-height: 1;
-        }
+                .glass-card {
+                    backdrop-filter: blur(20px);
+                    background: rgba(30, 41, 59, 0.7);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
 
-        .glass-card {
-            backdrop-filter: blur(20px);
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-15px); }
+                }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
+                @keyframes pulse-line {
+                    0% { stroke-dashoffset: 1000; opacity: 0.5; }
+                    50% { opacity: 1; }
+                    100% { stroke-dashoffset: 0; opacity: 0.5; }
+                }
 
-        @keyframes pulse-line {
-            0% { stroke-dashoffset: 1000; opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { stroke-dashoffset: 0; opacity: 0.5; }
-        }
+                .animate-float {
+                    animation: float 6s ease-in-out infinite;
+                }
 
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
+                .animate-float-delayed {
+                    animation: float 8s ease-in-out infinite;
+                    animation-delay: 1s;
+                }
 
-        .animate-float-delayed {
-            animation: float 8s ease-in-out infinite;
-            animation-delay: 1s;
-        }
+                .grid-pattern {
+                    background-image: radial-gradient(circle, #1e293b 1px, transparent 1px);
+                    background-size: 40px 40px;
+                }
 
-        .grid-pattern {
-            background-image: radial-gradient(circle, #1e293b 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
+                .glow-green {
+                    background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+                    transition: transform 0.1s ease-out;
+                }
 
-        .glow-green {
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
-            transition: transform 0.1s ease-out;
-        }
-
-        .glow-gold {
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
-        }
-      `}</style>
+                .glow-gold {
+                    background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+                }
+            `}</style>
 
             <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
-            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-
 
             {/* Hero Section */}
             <main className="relative min-h-[65vh] pt-32 pb-20 overflow-hidden">
@@ -137,7 +131,7 @@ export default function HeroSection() {
 
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-12 items-center">
                     {/* Left Column Content */}
-                    <motion.div 
+                    <motion.div
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
@@ -145,7 +139,7 @@ export default function HeroSection() {
                     >
                         {/* Trust Badge */}
                         <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-[#222a3d] px-4 py-2 rounded-full w-fit">
-                            <span className="material-symbols-outlined text-[#4edea3]" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
+                            <ShieldCheck className="w-4 h-4 text-[#4edea3]" />
                             <span className="text-[12px] font-semibold tracking-wider text-[#CBD5E1]">Trusted by Forex Traders Worldwide</span>
                         </motion.div>
 
@@ -170,7 +164,13 @@ export default function HeroSection() {
                             <Link href="/analysis">
                                 <button className="px-8 py-4 bg-[#10b981] text-[#00422b] text-[18px] font-semibold rounded-xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all">
                                     Explore Analysis
-                                    <span className="material-symbols-outlined">trending_up</span>
+                                    <TrendingUp className="w-5 h-5" />
+                                </button>
+                            </Link>
+
+                            <Link href="/blog">
+                                <button className="border-2 border-[#ffb95f] text-[#ffb95f] hover:bg-[#ffb95f]/10 px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 active:scale-95">
+                                    Learn More
                                 </button>
                             </Link>
                         </motion.div>
@@ -179,7 +179,7 @@ export default function HeroSection() {
                     {/* Right Column Content */}
                     <div className="relative flex justify-center items-center mt-12 md:mt-0">
                         {/* Market Dashboard Card */}
-                        <motion.div 
+                        <motion.div
                             variants={cardContainerVariants}
                             initial="hidden"
                             animate="visible"
@@ -232,7 +232,7 @@ export default function HeroSection() {
                         </motion.div>
 
                         {/* Floating Mini Cards */}
-                        <motion.div 
+                        <motion.div
                             variants={floatingCardRightVariants}
                             initial="hidden"
                             animate="visible"
@@ -240,7 +240,7 @@ export default function HeroSection() {
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-[#4edea3]/10 flex items-center justify-center">
-                                    <span className="material-symbols-outlined text-[#4edea3]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                                    <CheckCircle2 className="w-5 h-5 text-[#4edea3]" />
                                 </div>
                                 <div>
                                     <span className="text-[12px] font-semibold tracking-wider text-[#bbcabf] block">Win Rate</span>
@@ -249,7 +249,7 @@ export default function HeroSection() {
                             </div>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             variants={floatingCardLeftVariants}
                             initial="hidden"
                             animate="visible"
@@ -257,7 +257,7 @@ export default function HeroSection() {
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-[#ffb95f]/10 flex items-center justify-center">
-                                    <span className="material-symbols-outlined text-[#ffb95f]" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
+                                    <Zap className="w-5 h-5 text-[#ffb95f]" />
                                 </div>
                                 <div>
                                     <span className="text-[12px] font-semibold tracking-wider text-[#bbcabf] block">Monthly Signals</span>

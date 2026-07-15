@@ -76,16 +76,18 @@ const ManagePage = async ({
                         <p className="text-slate-500 text-sm mb-6">You haven&apos;t shared any forex analysis. Start analyzing the market and post one today!</p>
                     </div>
                 ) : (
-                    <ManageCard myAnalysis={myAnalysis} />
-                    // <div></div>
+
+                    <div>
+                        <ManageCard myAnalysis={myAnalysis} />
+
+                        <HeroUIPagination
+                            currentPage={page}
+                            totalPages={totalPages}
+                        />
+                    </div>
                 )}
 
-                <div>
-                    <HeroUIPagination
-                        currentPage={page}
-                        totalPages={totalPages}
-                    />
-                </div>
+
             </div>
         </div>
     );

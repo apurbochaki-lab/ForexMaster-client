@@ -135,7 +135,7 @@ export default function Footer() {
                         © 2026 ForexMaster. All Rights Reserved.
                     </p>
                     <p className="text-xs text-center md:text-right text-[#CBD5E1]/70 flex items-center gap-1">
-                        Built with <span className="text-[#F59E0B] font-medium">Next.js, TypeScript, Express.js and MongoDB</span>
+                        Built with <span className="text-[#F59E0B] font-medium">Next.js, TypeScript, Express.js and MongoDB</span> By : <span className='text-green-300 font-medium'>Apurbo Chaki</span>                  
                     </p>
                 </div>
 
