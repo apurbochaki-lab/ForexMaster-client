@@ -105,6 +105,7 @@ export default function AnalysisForm({ user }: AnalysisFormProps) {
 
     const handleAddAnalysis = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        toast.success("Uploading...")
         const form = e.target as HTMLFormElement;
 
         const formData = new FormData(e.target as HTMLFormElement);
@@ -173,7 +174,7 @@ export default function AnalysisForm({ user }: AnalysisFormProps) {
             <Card.Content className="pt-8">
                 <form onSubmit={handleAddAnalysis} className="space-y-6">
                     {/* Title */}
-                    <TextField name="title" className="w-full">
+                    <TextField name="title" className="w-full" isRequired={true}>
                         <Label className="text-sm font-medium text-slate-300 mb-2 block">
                             Analysis Title
                         </Label>
@@ -188,7 +189,7 @@ export default function AnalysisForm({ user }: AnalysisFormProps) {
                         <Label htmlFor="currentCondition" className="text-sm font-medium text-slate-300">
                             Current Market Condition
                         </Label>
-                        <TextArea
+                        <TextArea required
                             id="currentCondition"
                             name="currentCondition"
                             rows={3}
@@ -202,7 +203,7 @@ export default function AnalysisForm({ user }: AnalysisFormProps) {
                         <Label htmlFor="description" className="text-sm font-medium text-slate-300">
                             Full Analysis Description
                         </Label>
-                        <TextArea
+                        <TextArea required
                             id="description"
                             name="description"
                             rows={5}

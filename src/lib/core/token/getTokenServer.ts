@@ -2,6 +2,7 @@
 
 import { auth } from "@/lib/auth"
 import { headers } from "next/headers"
+import { handleStatusCode } from "../server";
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -24,7 +25,8 @@ export const protectedFetch = async <T>(path: string): Promise<T> => {
             ...await authHeaderServer()
         }
     });
-    return res.json();
+    // return res.json();
+    return handleStatusCode(res);
 }
 
 

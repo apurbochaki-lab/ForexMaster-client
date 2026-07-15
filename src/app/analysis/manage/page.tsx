@@ -45,7 +45,6 @@ const ManagePage = async ({
     const page = analysisData?.page;
     const totalPages = analysisData?.totalPages
 
-    console.log(analysisData)
 
     return (
         <div className="min-h-screen bg-[#0F172A] text-white pt-28 pb-30 px-4 md:px-8">

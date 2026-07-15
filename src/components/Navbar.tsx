@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Bars, House, ChartAreaStacked, ArrowShapeTurnUpLeft, LayoutCells, FileText, CircleInfoFill } from "@gravity-ui/icons";
-import { Button, Drawer, Spinner } from "@heroui/react";
+import { Bars, House, ChartAreaStacked, ArrowShapeTurnUpLeft, LayoutCells, FileText, CircleInfoFill, CirclePlus, PlusShape, CircleInfo, Gear, Persons, ArrowRightFromSquare } from "@gravity-ui/icons";
+import { Avatar, Button, Drawer, Dropdown, Label, Spinner } from "@heroui/react";
 import { useMemo, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
@@ -37,12 +37,12 @@ const Navbar = () => {
             { label: "Home", href: "/", icon: House },
             { label: "Analysis", href: "/analysis", icon: ChartAreaStacked },
             { label: "Blog", href: "/blog", icon: FileText },
-            { label: "About", href: "/about", icon: CircleInfoFill },
+            { label: "About", href: "/about", icon: CircleInfo },
         ];
 
         if (user) {
             links.push(
-                { label: "Add Analysis", href: "/analysis/add", icon: ArrowShapeTurnUpLeft },
+                { label: "Add Analysis", href: "/analysis/add", icon: PlusShape },
                 { label: "Manage Analysis", href: "/analysis/manage", icon: LayoutCells }
             );
         }
@@ -93,9 +93,61 @@ const Navbar = () => {
                             <span className="text-xs text-muted">Loading</span>
                         </div>
                         : user ? (
-                            <button onClick={handleLogout} className="px-6 py-2 rounded-lg border-2 border-red-500 text-red-500 font-bold hover:bg-red-500/10 active:scale-95 transition-all">
-                                Logout
-                            </button>
+                            // <button onClick={handleLogout} className="px-6 py-2 rounded-lg border-2 border-red-500 text-red-500 font-bold hover:bg-red-500/10 active:scale-95 transition-all">
+                            //     Logout
+                            // </button>
+
+                            <Dropdown>
+                                <Dropdown.Trigger className="rounded-full">
+                                    <Avatar>
+                                        <Avatar.Image
+                                            alt="Junior Garcia"
+                                            src={user?.image || "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"}
+                                        />
+                                        <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+                                    </Avatar>
+                                </Dropdown.Trigger>
+
+                                <Dropdown.Popover className="bg-blue-950">
+                                    <div className="px-3 pt-3 pb-1">
+                                        <div className="flex items-center gap-2">
+                                            <Avatar size="sm">
+                                                <Avatar.Image
+                                                    alt="Jane"
+                                                    src={user?.image || "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"}
+                                                />
+                                                <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+                                            </Avatar>
+                                            <div className="flex flex-col gap-0">
+                                                <p className="text-sm leading-5 font-medium text-white">{user?.name}</p>
+                                                <p className="text-xs leading-none text-white/70">{user?.email}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <Dropdown.Menu>
+
+                                        <Dropdown.Item id="profile" textValue="Profile">
+                                            <Link href="/profile" className="flex w-full items-center justify-between gap-2">
+                                                {/* <div > */}
+                                                    <Label className="text-green-500 hover:text-black">Profile</Label>
+                                                    <Persons className="text-green-500" />
+                                                {/* </div> */}
+                                            </Link>
+                                        </Dropdown.Item>
+
+                                        <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+                                            <div onClick={handleLogout}
+                                                className="flex w-full items-center justify-between gap-2">
+                                                <Label>Log Out</Label>
+                                                <ArrowRightFromSquare className="size-3.5 text-danger" />
+                                            </div>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
+                            </Dropdown>
+
+
+
                         ) : (
                             <>
                                 <Link href="/auth/login">
@@ -155,6 +207,21 @@ const Navbar = () => {
                                     <Drawer.Body className="flex flex-col justify-between py-6 px-4 h-full overflow-y-auto bg-[#0b1326]">
                                         {/* Mobile Navigation Links */}
                                         <nav className="flex flex-col gap-2">
+
+                                            {user && (
+                                                <Link
+                                                    href="/profile"
+                                                    onClick={() => setIsOpen(false)}
+                                                    className={`flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium transition-all ${pathName === "/profile"
+                                                        ? "bg-[#4edea3]/10 text-[#4edea3] font-bold border-l-4 border-[#4edea3]"
+                                                        : "text-[#bbcabf] hover:bg-white/5 hover:text-[#ffb95f]"
+                                                        }`}
+                                                >
+                                                    <Persons className="size-5" />
+                                                    Profile
+                                                </Link>
+                                            )}
+
                                             {navLinks.map((link) => {
                                                 const isActive = pathName === link.href;
                                                 const Icon = link.icon;
@@ -173,6 +240,11 @@ const Navbar = () => {
                                                     </Link>
                                                 );
                                             })}
+
+
+
+
+
                                         </nav>
 
                                         {/* Mobile Conditional Auth Buttons */}
