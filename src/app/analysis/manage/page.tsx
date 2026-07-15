@@ -1,8 +1,9 @@
+import HeroUIPagination from "@/components/HeroUIPagination";
 import ManageCard from "@/components/ManageCard";
 import { getMyAnalysis } from "@/lib/api/analysis";
 import { getSession } from "@/lib/core/session";
 
-// Interface strictly preserved
+// This interface used from multiple pages (Don't remove this)
 export interface Analysis {
     _id: string;
     title: string;
@@ -20,12 +21,31 @@ export interface Analysis {
     createdAt: string;
 }
 
-const ManagePage = async () => {
+export interface AnalysisResponse {
+    data: Analysis[];
+    page: number;
+    totalPages: number;
+    totalData: number;
+}
+
+const ManagePage = async ({
+    searchParams
+}: {
+    searchParams: Promise<{ page?: string }>
+}) => {
+    const params = await searchParams;
+
     const user = await getSession();
     const authorId = user?.id;
 
     // user posted analysis
-    const myAnalysis: Analysis[] = await getMyAnalysis(authorId) || [];
+    const analysisData = await getMyAnalysis(authorId, params.page) || [];
+    const myAnalysis = analysisData?.data;
+
+    const page = analysisData?.page;
+    const totalPages = analysisData?.totalPages
+
+    console.log(analysisData)
 
     return (
         <div className="min-h-screen bg-[#0F172A] text-white pt-28 pb-30 px-4 md:px-8">
@@ -46,7 +66,7 @@ const ManagePage = async () => {
 
                     <div className="bg-[#1E293B]/50 border border-slate-800 px-5 py-3 rounded-2xl flex flex-col items-center justify-center min-w-[150px]">
                         <span className="text-xs text-slate-500 uppercase font-medium">Total Analysis</span>
-                        <span className="text-3xl font-black text-emerald-400 mt-1">{myAnalysis.length}</span>
+                        <span className="text-3xl font-black text-emerald-400 mt-1">{analysisData?.totalData}</span>
                     </div>
                 </div>
 
@@ -60,6 +80,13 @@ const ManagePage = async () => {
                     <ManageCard myAnalysis={myAnalysis} />
                     // <div></div>
                 )}
+
+                <div>
+                    <HeroUIPagination
+                        currentPage={page}
+                        totalPages={totalPages}
+                    />
+                </div>
             </div>
         </div>
     );
