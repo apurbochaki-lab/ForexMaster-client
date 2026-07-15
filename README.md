@@ -1,36 +1,153 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 ForexMaster
 
-## Getting Started
+> A modern Forex Trading Analysis Platform built for traders to access professional market insights, technical analysis, and trading education in one place.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge\&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=for-the-badge\&logo=typescript)
+![MongoDB](https://img.shields.io/badge/MongoDB-green?style=for-the-badge\&logo=mongodb)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38BDF8?style=for-the-badge\&logo=tailwind-css)
+![JWT](https://img.shields.io/badge/JWT-Authentication-orange?style=for-the-badge)
+
+---
+
+## 📖 Project Description
+
+ForexMaster is a professional Forex market analysis platform designed to help traders make informed decisions through high-quality technical analysis and market insights.
+
+The platform provides detailed trading setups including market bias, confidence level, strategy information, timeframe analysis, and price action based trading opportunities. Traders can explore analysis posts, view market conditions, and improve their understanding of market behavior using a clean and responsive interface.
+
+The project focuses on simplicity, speed, security, and an excellent user experience across desktop, tablet, and mobile devices.
+
+---
+
+## 🌐 Live Demo
+
+🔗 **Live Website:** [ForexMaster Live](https://forex-master-client.vercel.app)
+
+🛠️ **Backend Repo** [https://github.com/apurbochaki-lab/ForexMaster-server](https://github.com/apurbochaki-lab/ForexMaster-server)
+
+---
+
+## ✨ Key Features
+
+* 🔐 **JWT Authentication & Protected Routes**
+  Secure user authentication system using JWT tokens with protected API endpoints and private routes.
+
+* 📊 **Professional Forex Market Analysis System**
+  Create and publish detailed forex analysis including market condition, strategy, confidence level, and market bias.
+
+* 📄 **Server-Side Pagination**
+  Optimized data loading with server-side pagination for improved performance and scalability.
+
+* 📈 **Detailed Analysis Dashboard**
+  View complete trading analysis with pair information, timeframe, strategy, and technical insights.
+
+* ⚡ **REST API with MongoDB Integration**
+  Fast and efficient backend architecture powered by Express.js, MongoDB, and TypeScript.
+
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+* Next.js
+* TypeScript
+* Tailwind CSS
+* HeroUI
+* Recharts
+
+### Backend
+
+* Node.js
+* Express.js
+* TypeScript
+* JWT Authentication
+* MongoDB
+
+### Deployment
+
+* Vercel (Frontend)
+* Vercel / Render (Backend)
+
+---
+
+## ⚙️ Installation Guide
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/apurbochaki-lab/ForexMaster-client.git
+```
+
+### 2️⃣ Move into project directory
+
+```bash
+cd ForexMaster-client
+```
+
+### 3️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 4️⃣ Configure Environment Variables
+
+Create a `.env.local` file in the frontend project:
+
+```env
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+NEXT_PUBLIC_SERVER_URL=
+MONGODB_URI=
+NEXT_PUBLIC_IMGBB_API=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
+
+Create a `.env` file in the backend project:
+
+```env
+PORT=
+MONGODB_URI=
+NEXT_PUBLIC_CLIENT_URL=
+```
+
+### 5️⃣ Run the frontend
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 6️⃣ Run the backend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🎯 Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+* User profile management
+* Premium analysis membership
+* TradingView chart integration
+* Favorite analysis feature
+* Advanced filtering and search
+* Notification system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👨‍💻 Author
 
-## Deploy on Vercel
+**Apurbo Chaki**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Frontend Developer | Forex Enthusiast | Problem Solver
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## ⭐ Support
+
+If you found this project helpful, please consider giving it a **star ⭐** on GitHub.
